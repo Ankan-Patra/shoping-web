@@ -20,7 +20,7 @@ const Head = () => {
             </div>
 
             {/* righted side */}
-            <img src='https://welpmagazine.com/wp-content/uploads/2020/10/158-758x426.jpeg' className='w-full sm:w-1/2' alt="this is nothing" />
+            <img src={assets.hero_img} className='w-full sm:w-1/2' alt="this is nothing" />
         </div>
     )
 }
