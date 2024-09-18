@@ -7,7 +7,8 @@ const Footer = () => {
         <div>
             <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
                 <div>
-                    <img src='https://tse2.mm.bing.net/th?id=OIP.V3k4wm5U44DQ2DkYhhpcCAHaEK&pid=Api&P=0&h=180' className='mb-5 w-32' alt="Logo" />
+                    {/* <img src='' className='mb-5 w-32' alt="Logo" /> */}
+                    <h1 className='text-white bg-black p-2 rounded-lg mb w-28 font-bold text-lg text-center mb-4'>A-SHOP</h1>
                     <p className='w-full md:w-2/3 text-gray-500'>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. In dolorum minima deserunt illum nulla sit ducimus molestiae debitis praesentium eius culpa, cumque quidem.
                     </p>
