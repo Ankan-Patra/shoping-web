@@ -3,9 +3,11 @@ import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/frontend_assets/assets';
 import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
+import { motion } from 'framer-motion';
+
 
 const Collection = () => {
-  const { products , search , showSearch } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProduct, setFilterProduct] = useState([]); // display the whole category
   const [category, setCategory] = useState([]);  // display the updated category 
@@ -45,9 +47,9 @@ const Collection = () => {
 
   const filtering = () => {
     let productCopy = products.slice();
-    
-    if(showSearch && search){
-     productCopy = productCopy.filter((item)=>{return item.name.toLowerCase().includes(search.toLowerCase())}); 
+
+    if (showSearch && search) {
+      productCopy = productCopy.filter((item) => { return item.name.toLowerCase().includes(search.toLowerCase()) });
     }
 
     if (category.length > 0) {
@@ -57,7 +59,7 @@ const Collection = () => {
       productCopy = productCopy.filter((item) => subCategory.includes(item.subCategory))
     }
     setFilterProduct(productCopy);
-    
+
   }
 
   const sortProduct = () => {
@@ -84,7 +86,7 @@ const Collection = () => {
 
   useEffect(() => {
     filtering();
-  }, [category, subCategory, search, showSearch ])
+  }, [category, subCategory, search, showSearch])
 
   useEffect(() => {
     sortProduct();
@@ -145,11 +147,18 @@ const Collection = () => {
         </div>
 
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
-          {
-            filterProduct.map((item, index) => {
-              return <ProductItem key={index} id={item._id} image={item.image} name={item.name} price={item.price} />
-            })
-          }
+
+          {filterProduct.map((item, index) => (
+            <motion.div
+              key={item._id}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <ProductItem id={item._id} image={item.image} name={item.name} price={item.price} />
+            </motion.div>
+          ))}
         </div>
       </div>
 
